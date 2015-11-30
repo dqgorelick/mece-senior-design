@@ -1,0 +1,22 @@
+{
+  "name": "Breakerbot",
+  "version": "1.0.0",
+  "description": "Internet of things for Intel Edison chip",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dqgorelick/mece-senior-design.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dqgorelick/mece-senior-design/issues"
+  },
+  "homepage": "https://github.com/dqgorelick/mece-senior-design",
+  "devDependencies": {
+    "express": "^4.13.3"
+  }
+}
