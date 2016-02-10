@@ -105,7 +105,7 @@ http.createServer(function(req, res) {
     console.log('Listening for video stream on port ' + configServer.streamPort);
 
     // Run do_ffmpeg.sh from node
-    childProcess.exec('/bin/do_ffmpeg.sh');
+    childProcess.exec('./bin/do_ffmpeg.sh');
 });
 
 module.exports.app = app;

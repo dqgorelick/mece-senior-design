@@ -1,15 +1,21 @@
-.wrapper{
-	margin: 10px auto;
-	text-align: center;
-}
-
-.wrapper img{
-	width: 150px;
-	height: auto;
-}
-
-#canvas-video {
-  width: 640px;
-  height: 480px;
-  border: 1px solid #ccc;
-}
+.wrapper {
+  text-align: center;
+  margin: 50px auto; }
+  .wrapper .video-container {
+    margin: 0 auto;
+    width: 50%;
+    min-width: 640px;
+    position: relative; }
+    .wrapper .video-container .watermark {
+      position: absolute;
+      top: 20px;
+      right: 20px; }
+      .wrapper .video-container .watermark img {
+        width: 100px;
+        height: auto;
+        opacity: 0.5; }
+    .wrapper .video-container #canvas-video {
+      width: 100%;
+      height: auto; }
+  .wrapper .controls {
+    margin: 20px auto; }

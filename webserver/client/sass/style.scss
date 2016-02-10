@@ -1,0 +1,30 @@
+html {
+    // background-color: #000000;
+}
+.wrapper {
+    text-align: center;
+    margin: 50px auto;
+    .video-container {
+        margin: 0 auto;
+        width: 50%;
+        min-width: 640px;
+        position: relative;
+        .watermark {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            img {
+                width: 100px;
+                height: auto;
+                opacity: 0.5;
+            }
+        }
+        #canvas-video {
+          width: 100%;
+          height: auto;
+        }
+    }
+    .controls {
+        margin: 20px auto;
+    }
+}
