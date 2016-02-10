@@ -1,0 +1,15 @@
+.wrapper{
+	margin: 10px auto;
+	text-align: center;
+}
+
+.wrapper img{
+	width: 150px;
+	height: auto;
+}
+
+#canvas-video {
+  width: 640px;
+  height: 480px;
+  border: 1px solid #ccc;
+}

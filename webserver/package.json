@@ -16,7 +16,9 @@
     "url": "https://github.com/dqgorelick/mece-senior-design/issues"
   },
   "homepage": "https://github.com/dqgorelick/mece-senior-design",
-  "devDependencies": {
+  "dependencies": {
+    "morgan": "^1.6.1",
+    "ws": "^1.0.1",
     "express": "^4.13.3",
     "socket.io": "^1.4.5"
   }
