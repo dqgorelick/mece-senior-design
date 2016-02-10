@@ -61,6 +61,10 @@ var wsServer = new(ws.Server)({
 });
 console.log('WebSocket server listening on port ' + configServer.wsPort);
 
+wsServer.on('update', function(socket) {
+    console.log("Clicked!");
+});
+
 wsServer.on('connection', function(socket) {
     // Send magic bytes and video size to the newly connected socket
     // struct { char magic[4]; unsigned short width, height;}

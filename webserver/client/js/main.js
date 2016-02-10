@@ -1,10 +1,4 @@
 $(document).ready(function(){
-    // var client = io();
-    // $(".button").click(function(){
-    //     console.log("Clicked!");
-    //     client.emit("update");
-    // })
-    var wsUrl = 'ws://155.41.64.114:8084/';
 
     // Show loading notice
     var canvas = document.getElementById('canvas-video');
@@ -15,4 +9,11 @@ $(document).ready(function(){
     // Start the player
     var client = new WebSocket(wsUrl);
     var player = new jsmpeg(client, { canvas:canvas });
+
+    $(".button").click(function(){
+        console.log("Clicked!");
+        client.send("update");
+    })
+    var wsUrl = 'ws://155.41.64.114:8084/';
+
 })
