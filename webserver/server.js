@@ -12,26 +12,6 @@ var childProcess = require('child_process');
 var morgan = require('morgan');
 var ws = require('ws');
 
-app.use(express.static(__dirname));
-
-
-// io.on('connection', function(socket) {
-//     console.log("Edison connected!");
-//     socket.on("update", function(){
-//         console.log("Working!");
-//         exec(cmd, function(error, stdout, stderr) {
-//             console.log('stdout: ' + stdout);
-//             console.log('stderr: ' + stderr);
-//             if (error !== null) {
-//                 console.log('exec error: ' + error);
-//             }
-//         });
-//     })
-// })
-// http.listen(port, function() {
-//     console.log("[ SERVER ] Hosting server on port " + port);
-// });
-
 // configuration files
 var configServer = require('./lib/config/server');
 
@@ -62,10 +42,15 @@ var wsServer = new(ws.Server)({
 
 console.log('WebSocket server listening on port ' + configServer.wsPort);
 
+// wsServer.on('update', function(data) {
+//     console.log("hello ", data);
+// })
 
 wsServer.on('connection', function(socket) {
-    socket.on("update", function() {
-        console.log("updated bitches");
+
+
+    socket.on("message", function(data) {
+        console.log("updated bitches: ", data);
     })
     // Send magic bytes and video size to the newly connected socket
     // struct { char magic[4]; unsigned short width, height;}
