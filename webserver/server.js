@@ -59,13 +59,14 @@ var height = 240;
 var wsServer = new(ws.Server)({
     port: configServer.wsPort
 });
+
 console.log('WebSocket server listening on port ' + configServer.wsPort);
 
-wsServer.on('update', function(socket) {
-    console.log("Clicked!");
-});
 
 wsServer.on('connection', function(socket) {
+    socket.on("update", function() {
+        console.log("updated bitches");
+    })
     // Send magic bytes and video size to the newly connected socket
     // struct { char magic[4]; unsigned short width, height;}
     var streamHeader = new Buffer(8);

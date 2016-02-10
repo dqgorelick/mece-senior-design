@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+    var wsUrl = 'ws://155.41.64.114:8084/';
     // Show loading notice
     var canvas = document.getElementById('canvas-video');
     var ctx = canvas.getContext('2d');
@@ -14,6 +15,5 @@ $(document).ready(function(){
         console.log("Clicked!");
         client.send("update");
     })
-    var wsUrl = 'ws://155.41.64.114:8084/';
 
 })
