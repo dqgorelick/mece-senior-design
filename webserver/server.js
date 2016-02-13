@@ -42,15 +42,26 @@ var wsServer = new(ws.Server)({
 
 console.log('WebSocket server listening on port ' + configServer.wsPort);
 
-// wsServer.on('update', function(data) {
-//     console.log("hello ", data);
-// })
-
 wsServer.on('connection', function(socket) {
-
-
     socket.on("message", function(data) {
-        console.log("updated bitches: ", data);
+        var message = JSON.parse(data);
+        switch(message.command) {
+            case("UP") :
+                console.log ("UP");
+                break;
+            case("LEFT") :
+                console.log ("LEFT");
+                break;
+            case("RIGHT") :
+                console.log ("RIGHT");
+                break;
+            case("DOWN") :
+                console.log ("DOWN");
+                break;
+            default:
+                console.log("Unknown command");
+                break;
+        }
     })
     // Send magic bytes and video size to the newly connected socket
     // struct { char magic[4]; unsigned short width, height;}

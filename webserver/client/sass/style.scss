@@ -1,5 +1,5 @@
-html {
-    // background-color: #000000;
+body {
+    font-size: 16px;
 }
 .wrapper {
     text-align: center;
@@ -9,6 +9,7 @@ html {
         width: 50%;
         min-width: 640px;
         position: relative;
+        border: 2px #aaaaaa solid;
         .watermark {
             position: absolute;
             top: 20px;
@@ -26,5 +27,17 @@ html {
     }
     .controls {
         margin: 20px auto;
+        .command {
+            padding: 0.5em 0;
+            width: 100px;
+            margin: 5px auto;
+            background-color: #aaaaaa;
+            &.left, &.right {
+                display: inline-block;
+            }
+            &.active {
+                border: 2px red dotted;
+            }
+        }
     }
 }

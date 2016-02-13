@@ -8,7 +8,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" type = "text/css" href = "css/normalize.css" >
 		<link rel="stylesheet" type = "text/css" href = "css/style.css" >
-		<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+		<script src="js/loopManager.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script src="js/jsmpg.js"></script>
 	</head>
@@ -22,7 +22,10 @@
  			  <canvas id="canvas-video" width="640" height="480"></canvas>
  			</div>
  			<div class="controls">
- 				<button class="button">Talk to Edison!</button>
+ 				<div class="command up">UP</div>
+ 				<div class="command left">LEFT</div>
+ 				<div class="command right">RIGHT</div>
+ 				<div class="command down">DOWN</div>
  			</div>
  		</div>
 		<script type="text/javascript" src="js/main.js"></script>

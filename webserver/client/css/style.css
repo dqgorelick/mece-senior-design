@@ -1,3 +1,6 @@
+body {
+  font-size: 16px; }
+
 .wrapper {
   text-align: center;
   margin: 50px auto; }
@@ -5,7 +8,8 @@
     margin: 0 auto;
     width: 50%;
     min-width: 640px;
-    position: relative; }
+    position: relative;
+    border: 2px #aaaaaa solid; }
     .wrapper .video-container .watermark {
       position: absolute;
       top: 20px;
@@ -19,3 +23,12 @@
       height: auto; }
   .wrapper .controls {
     margin: 20px auto; }
+    .wrapper .controls .command {
+      padding: 0.5em 0;
+      width: 100px;
+      margin: 5px auto;
+      background-color: #aaaaaa; }
+      .wrapper .controls .command.left, .wrapper .controls .command.right {
+        display: inline-block; }
+      .wrapper .controls .command.active {
+        border: 2px red dotted; }
