@@ -1,8 +1,8 @@
 $(document).ready(function(){
 
     // CHANGE THIS DEPENDING ON DEV vs EDISON IP
-    // var wsUrl = 'ws://155.41.64.114:8084/';
-    var wsUrl = 'ws://localhost:8084/';
+    var wsUrl = 'ws://155.41.64.114:8084/';
+    // var wsUrl = 'ws://localhost:8084/';
     // Show loading notice
     var canvas = document.getElementById('canvas-video');
     var ctx = canvas.getContext('2d');
@@ -29,10 +29,6 @@ $(document).ready(function(){
         down : {
             command : "DOWN",
             data : "Lorem ipsum dolor sit amet"
-        },
-        count : {
-            command : "COUNT",
-            data: count
         }
     }
 
