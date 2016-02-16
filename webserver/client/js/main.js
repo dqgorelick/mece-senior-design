@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+    // CHANGE THIS DEPENDING ON DEV vs EDISON IP
     // var wsUrl = 'ws://155.41.64.114:8084/';
     var wsUrl = 'ws://localhost:8084/';
     // Show loading notice
@@ -28,13 +29,16 @@ $(document).ready(function(){
         down : {
             command : "DOWN",
             data : "Lorem ipsum dolor sit amet"
+        },
+        count : {
+            command : "COUNT",
+            data: count
         }
     }
 
     var keysDown = {};
 
     addEventListener("keydown", function(e) {
-        console.log(e.keyCode);
         if (e.keyCode === 38) { // Player holding up
             e.preventDefault();
             keysDown[e.keyCode] = true;
@@ -54,20 +58,30 @@ $(document).ready(function(){
     }, false);
 
     addEventListener("keyup", function(e) {
-        delete keysDown[e.keyCode];
+        if (e.keyCode === 38) { // Player holding up
+            keysDown[e.keyCode] = false;
+        }
+        if (e.keyCode === 40) { // Player holding down
+            keysDown[e.keyCode] = false;
+        }
+        if (e.keyCode === 37) { // Player holding left
+            keysDown[e.keyCode] = false;
+        }
+        if (e.keyCode === 39) { // Player holding right
+            keysDown[e.keyCode] = false;
+        }
     }, false);
-
     function cycle(elapsed) {
-        if (38 in keysDown) { // Player holding up
+        if (keysDown[38] == true) { // Player holding up
             client.send(JSON.stringify(commands.up));
         }
-        if (40 in keysDown) { // Player holding down
+        if (keysDown[40] == true) { // Player holding down
             client.send(JSON.stringify(commands.down));
         }
-        if (37 in keysDown) { // Player holding left
+        if (keysDown[37] == true) { // Player holding left
             client.send(JSON.stringify(commands.left));
         }
-        if (39 in keysDown) { // Player holding right
+        if (keysDown[39] == true) { // Player holding right
             client.send(JSON.stringify(commands.right));
         }
     }

@@ -58,6 +58,9 @@ wsServer.on('connection', function(socket) {
             case("DOWN") :
                 console.log ("DOWN");
                 break;
+            case("COUNT") :
+                console.log (message.command);
+                break;
             default:
                 console.log("Unknown command");
                 break;
