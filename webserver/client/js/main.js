@@ -80,6 +80,7 @@ $(document).ready(function(){
         if (keysDown[39] == true) { // Player holding right
             client.send(JSON.stringify(commands.right));
         }
+
     }
     // initiate 60 fps cycle
     loopManager.run(cycle)
