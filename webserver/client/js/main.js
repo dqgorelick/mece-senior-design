@@ -54,6 +54,7 @@ $(document).ready(function(){
         if (e.keyCode === 38) { // Player holding up
             e.preventDefault();
             if(!keysDown[e.keyCode]) {
+                code = "0000";
                 code = replaceBit(code, 1, "1");
             }
             keysDown[e.keyCode] = true;
@@ -61,6 +62,7 @@ $(document).ready(function(){
         if (e.keyCode === 37) { // Player holding left
             e.preventDefault();
             if(!keysDown[e.keyCode]) {
+                code = "0000";
                 code = replaceBit(code, 2, "1");
             }
             keysDown[e.keyCode] = true;
@@ -68,6 +70,7 @@ $(document).ready(function(){
         if (e.keyCode === 40) { // Player holding down
             e.preventDefault();
             if(!keysDown[e.keyCode]) {
+                code = "0000";
                 code = replaceBit(code, 3, "1");
             }
             keysDown[e.keyCode] = true;
@@ -75,6 +78,7 @@ $(document).ready(function(){
         if (e.keyCode === 39) { // Player holding right
             e.preventDefault();
             if(!keysDown[e.keyCode]) {
+                code = "0000";
                 code = replaceBit(code, 4, "1");
             }
             keysDown[e.keyCode] = true;
@@ -99,7 +103,7 @@ $(document).ready(function(){
             keysDown[e.keyCode] = false;
             code = replaceBit(code, 4, "0");
         }
-        client.send(code);
+        // client.send(code);
     }, false);
     /*
     function cycle(elapsed) {

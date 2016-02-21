@@ -66,6 +66,9 @@ wsServer.on('connection', function(socket) {
 
     socket.on('close', function(code, message) {
         console.log('Disconnected WebSocket (' + wsServer.clients.length + ' total)');
+        if(on_board){
+            childProcess.exec('echo "0000" > /dev/ttymcu0');
+        }
     });
 });
 
