@@ -49,41 +49,49 @@ $(document).ready(function(){
         console.log(e.keyCode);
         if (e.keyCode === 38) { // Player holding up
             e.preventDefault();
-            // keysDown[e.keyCode] = true;
-            client.send(JSON.stringify(commands.up));
+            if(!keysDown[e.keyCode]) {
+                client.send(JSON.stringify(commands.up));
+            }
+            keysDown[e.keyCode] = true;
         }
         if (e.keyCode === 40) { // Player holding down
             e.preventDefault();
-            // keysDown[e.keyCode] = true;
-            client.send(JSON.stringify(commands.down));
+            if(!keysDown[e.keyCode]) {
+                client.send(JSON.stringify(commands.down));
+            }
+            keysDown[e.keyCode] = true;
         }
         if (e.keyCode === 37) { // Player holding left
             e.preventDefault();
-            // keysDown[e.keyCode] = true;
-            client.send(JSON.stringify(commands.left));
+            if(!keysDown[e.keyCode]) {
+                client.send(JSON.stringify(commands.left));
+            }
+            keysDown[e.keyCode] = true;
         }
         if (e.keyCode === 39) { // Player holding right
             e.preventDefault();
-            // keysDown[e.keyCode] = true;
-            client.send(JSON.stringify(commands.right));
+            if(!keysDown[e.keyCode]) {
+                client.send(JSON.stringify(commands.right));
+            }
+            keysDown[e.keyCode] = true;
         }
     }, false);
 
     addEventListener("keyup", function(e) {
         if (e.keyCode === 38) { // Player holding up
-            // keysDown[e.keyCode] = false;
+            keysDown[e.keyCode] = false;
             client.send(JSON.stringify(commands.off_up));
         }
         if (e.keyCode === 40) { // Player holding down
-            // keysDown[e.keyCode] = false;
+            keysDown[e.keyCode] = false;
             client.send(JSON.stringify(commands.off_down));
         }
         if (e.keyCode === 37) { // Player holding left
-            // keysDown[e.keyCode] = false;
+            keysDown[e.keyCode] = false;
             client.send(JSON.stringify(commands.off_left));
         }
         if (e.keyCode === 39) { // Player holding right
-            // keysDown[e.keyCode] = false;
+            keysDown[e.keyCode] = false;
             client.send(JSON.stringify(commands.off_right));
         }
     }, false);
