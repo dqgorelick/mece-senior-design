@@ -44,56 +44,62 @@ $(document).ready(function(){
     }
 
     var keysDown = {};
+    var code = "0000";
+    function replaceBit(string, index, value) {
+        return string.substr(0,index-1) + value + string.substr(index,string.length);
+    }
 
     addEventListener("keydown", function(e) {
         console.log(e.keyCode);
         if (e.keyCode === 38) { // Player holding up
             e.preventDefault();
             if(!keysDown[e.keyCode]) {
-                client.send(JSON.stringify(commands.up));
-            }
-            keysDown[e.keyCode] = true;
-        }
-        if (e.keyCode === 40) { // Player holding down
-            e.preventDefault();
-            if(!keysDown[e.keyCode]) {
-                client.send(JSON.stringify(commands.down));
+                code = replaceBit(code, 1, "1");
             }
             keysDown[e.keyCode] = true;
         }
         if (e.keyCode === 37) { // Player holding left
             e.preventDefault();
             if(!keysDown[e.keyCode]) {
-                client.send(JSON.stringify(commands.left));
+                code = replaceBit(code, 2, "1");
+            }
+            keysDown[e.keyCode] = true;
+        }
+        if (e.keyCode === 40) { // Player holding down
+            e.preventDefault();
+            if(!keysDown[e.keyCode]) {
+                code = replaceBit(code, 3, "1");
             }
             keysDown[e.keyCode] = true;
         }
         if (e.keyCode === 39) { // Player holding right
             e.preventDefault();
             if(!keysDown[e.keyCode]) {
-                client.send(JSON.stringify(commands.right));
+                code = replaceBit(code, 4, "1");
             }
             keysDown[e.keyCode] = true;
         }
+        client.send(code);
     }, false);
 
     addEventListener("keyup", function(e) {
         if (e.keyCode === 38) { // Player holding up
             keysDown[e.keyCode] = false;
-            client.send(JSON.stringify(commands.off_up));
-        }
-        if (e.keyCode === 40) { // Player holding down
-            keysDown[e.keyCode] = false;
-            client.send(JSON.stringify(commands.off_down));
+            code = replaceBit(code, 1, "0");
         }
         if (e.keyCode === 37) { // Player holding left
             keysDown[e.keyCode] = false;
-            client.send(JSON.stringify(commands.off_left));
+            code = replaceBit(code, 2, "0");
+        }
+        if (e.keyCode === 40) { // Player holding down
+            keysDown[e.keyCode] = false;
+            code = replaceBit(code, 3, "0");
         }
         if (e.keyCode === 39) { // Player holding right
             keysDown[e.keyCode] = false;
-            client.send(JSON.stringify(commands.off_right));
+            code = replaceBit(code, 4, "0");
         }
+        client.send(code);
     }, false);
     /*
     function cycle(elapsed) {

@@ -45,60 +45,10 @@ var wsServer = new(ws.Server)({
 console.log('WebSocket server listening on port ' + configServer.wsPort);
 
 wsServer.on('connection', function(socket) {
-    socket.on("message", function(data) {
-        var message = JSON.parse(data);
-        switch(message.command) {
-            case("UP") :
-                console.log ("UP");
-                if (on_board) {
-                    childProcess.exec('echo "up" > /dev/ttymcu0');
-                }
-                break;
-            case("LEFT") :
-                console.log ("LEFT");
-                if (on_board) {
-                    childProcess.exec('echo "left" > /dev/ttymcu0');
-                }
-                break;
-            case("RIGHT") :
-                console.log ("RIGHT");
-                if (on_board) {
-                    childProcess.exec('echo "right" > /dev/ttymcu0');
-                }
-                break;
-            case("DOWN") :
-                console.log ("DOWN");
-                if (on_board) {
-                    childProcess.exec('echo "down" > /dev/ttymcu0');
-                }
-                break;
-            case("OFF_UP") :
-                console.log ("OFF_UP");
-                if (on_board) {
-                    childProcess.exec('echo "off_up" > /dev/ttymcu0');
-                }
-                break;
-            case("OFF_DOWN") :
-                console.log ("OFF_DOWN");
-                if (on_board) {
-                    childProcess.exec('echo "off_down" > /dev/ttymcu0');
-                }
-                break;
-            case("OFF_LEFT") :
-                console.log ("OFF_LEFT");
-                if (on_board) {
-                    childProcess.exec('echo "off_left" > /dev/ttymcu0');
-                }
-                break;
-            case("OFF_RIGHT") :
-                console.log ("OFF_RIGHT");
-                if (on_board) {
-                    childProcess.exec('echo "off_right" > /dev/ttymcu0');
-                }
-                break;
-            default:
-                console.log("Unknown command");
-                break;
+    socket.on("message", function(code) {
+        console.log(code);
+        if(on_board){
+            childProcess.exec('echo ' + code + ' > /dev/ttymcu0');
         }
     })
     // Send magic bytes and video size to the newly connected socket
