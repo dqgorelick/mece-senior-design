@@ -48,18 +48,35 @@ wsServer.on('connection', function(socket) {
         switch(message.command) {
             case("UP") :
                 console.log ("UP");
+                // childProcess.exec('echo "up" > /dev/ttymcu0');
                 break;
             case("LEFT") :
                 console.log ("LEFT");
+                // childProcess.exec('echo "left" > /dev/ttymcu0');
                 break;
             case("RIGHT") :
                 console.log ("RIGHT");
+                // childProcess.exec('echo "right" > /dev/ttymcu0');
                 break;
             case("DOWN") :
                 console.log ("DOWN");
+                // childProcess.exec('echo "down" > /dev/ttymcu0');
                 break;
-            case("COUNT") :
-                console.log (message.command);
+            case("OFF_UP") :
+                console.log ("OFF_UP");
+                // childProcess.exec('echo "off_up" > /dev/ttymcu0');
+                break;
+            case("OFF_DOWN") :
+                console.log ("OFF_DOWN");
+                // childProcess.exec('echo "off_down" > /dev/ttymcu0');
+                break;
+            case("OFF_LEFT") :
+                console.log ("OFF_LEFT");
+                // childProcess.exec('echo "off_left" > /dev/ttymcu0');
+                break;
+            case("OFF_RIGHT") :
+                console.log ("OFF_RIGHT");
+                // childProcess.exec('echo "off_right" > /dev/ttymcu0');
                 break;
             default:
                 console.log("Unknown command");
