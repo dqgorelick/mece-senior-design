@@ -1,5 +1,4 @@
 $(document).ready(function(){
-
     // CHANGE THIS DEPENDING ON DEV vs EDISON IP
     var wsUrl = 'ws://155.41.104.207:8084/';
     // var wsUrl = 'ws://localhost:8084/';
