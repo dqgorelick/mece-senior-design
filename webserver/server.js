@@ -25,7 +25,7 @@ if(!development) {
 var getIP = childProcess.exec(ip_command);
 getIP.stdout.on('data', function (data) {
     if(!development) {
-        ip = 'ws://'+data.toString().slice(0,-1)+':8040';
+        ip = 'ws://'+data.toString().slice(0,-1)+':8084/';
     }
     fs.writeFile("./client/ip.txt", ip, function(err) {
         if(err) {
