@@ -1,3 +1,7 @@
+function registeredButton(btn) {
+    return (btn === "up" || btn === "left" || btn === "right" || btn === "down" || btn==="b_button") ? true : false;
+}
+
 function getButton(btn) {
     switch(btn) {
         case 0:

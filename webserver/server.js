@@ -1,21 +1,42 @@
-var on_board = false;
+/*
+*
+*   SET THIS FLAG TO TRUE IF RUNNING THIS ON EDISON
+*
+*/
+var development = true;
 
 var express = require("express");
 var app = express();
 var path = require("path");
-var port = process.argv[2] || 8080;
-// var http = require('http').Server(app);
-var io = require('socket.io')(http);
-var exec = require('child_process').exec;
-var cmd = "node -v";
-
+var fs = require('fs');
 var http = require('http');
 var childProcess = require('child_process');
 var morgan = require('morgan');
 var ws = require('ws');
-
 // configuration files
 var configServer = require('./lib/config/server');
+
+var ip = 'ws://localhost:8084/';
+var ip_command = 'ipconfig getifaddr en1';
+if(!development) {
+    ip_command = 'configure_edison --showWiFiIP';
+}
+
+var getIP = childProcess.exec(ip_command);
+getIP.stdout.on('data', function (data) {
+    if(!development) {
+        ip = 'ws://'+data.toString().slice(0,-1)+':8040';
+    }
+    fs.writeFile("./client/ip.txt", ip, function(err) {
+        if(err) {
+            return console.log(err);
+        }
+        console.log(ip, "saved to file");
+    });
+});
+getIP.stderr.on('err', function(err) {
+    console.log("Error finding IP!");
+})
 
 // app parameters
 app.set('port', configServer.httpPort);
@@ -47,12 +68,10 @@ console.log('WebSocket server listening on port ' + configServer.wsPort);
 wsServer.on('connection', function(socket) {
     socket.on("message", function(code) {
         console.log(code);
-        if(on_board){
+        if(!development){
             childProcess.exec('echo ' + code + ' > /dev/ttymcu0');
         }
     })
-    // Send magic bytes and video size to the newly connected socket
-    // struct { char magic[4]; unsigned short width, height;}
     var streamHeader = new Buffer(8);
 
     streamHeader.write(STREAM_MAGIC_BYTES);
@@ -66,7 +85,7 @@ wsServer.on('connection', function(socket) {
 
     socket.on('close', function(code, message) {
         console.log('Disconnected WebSocket (' + wsServer.clients.length + ' total)');
-        if(on_board){
+        if(!development){
             childProcess.exec('echo "0000" > /dev/ttymcu0');
         }
     });
@@ -96,6 +115,9 @@ http.createServer(function(req, res) {
 }).listen(configServer.streamPort, function() {
     console.log('Listening for video stream on port ' + configServer.streamPort);
 
+    if(!development) {
+        childProcess.exec('./bin/init)pins.sh');
+    }
     // Run do_ffmpeg.sh from node
     childProcess.exec('./bin/do_ffmpeg.sh');
 });
