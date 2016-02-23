@@ -52,7 +52,11 @@ function getButton(btn) {
         case 15:
             return("right");
             break;
+        case 16:
+            return("x_button");
+            break;
         default:
+            console.log(btn);
             return("");
             break;
     }

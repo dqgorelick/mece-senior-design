@@ -22,7 +22,6 @@ $(document).ready(function(){
 
     getIP(function(response){
         var wsUrl = response;
-        console.log(response);
         var client = new WebSocket(wsUrl);
         var player = new jsmpeg(client, { canvas:canvas });
 
