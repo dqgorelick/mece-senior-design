@@ -25,12 +25,18 @@ $(document).ready(function(){
         console.log("Gamepad connected at index %d: %s. %d buttons, %d axes.",
             gamepad.index, gamepad.id,
             gamepad.buttons.length, gamepad.axes.length);
+        $(".controls").css("opacity","1");
+        $(".connect").css("display","none");
     }, false);
 
     addEventListener("gamepaddisconnected", function(e) {
         gamepad_connected = false;
         gamepad = {};
         console.log("Gamepad disconnected");
+        code = "0000";
+        client.send(code);
+        $(".controls").css("opacity","0.2");
+        $(".connect").css("display","block");
     }, false);
 
     var breaking = false;

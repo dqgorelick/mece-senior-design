@@ -30,9 +30,20 @@ body {
           height: auto;
         }
     }
+    .connect {
+        position: absolute;
+        margin: 0 auto;
+        width: 100%;
+        margin-top: 85px;
+    }
     .controls {
         width: 600px;
         margin: 5px auto;
+        opacity: 0.2;
+        -webkit-transition: opacity 500ms ease-out;
+        -moz-transition: opacity 500ms ease-out;
+        -o-transition: opacity 500ms ease-out;
+        transition: opacity 500ms ease-out;
         .joystick {
             position: relative;
             display:inline-block;
