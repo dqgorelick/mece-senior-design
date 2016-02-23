@@ -127,7 +127,8 @@ $(document).ready(function(){
                         setLastState(it,true);
                         $("." + button).css("background-color","#CCCCCC");
                     } else {
-                        if(last_state[it] === true && registeredButton(button)) {
+                        if(last_state[it] === true) {
+                            console.log(number,it);
                             keyReleased(button);
                         }
                         setLastState(it,false);
