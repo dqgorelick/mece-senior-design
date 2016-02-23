@@ -1,4 +1,4 @@
-var on_board = true;
+var on_board = false;
 
 var express = require("express");
 var app = express();

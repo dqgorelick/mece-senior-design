@@ -1,9 +1,13 @@
 body {
   font-size: 16px; }
 
+* {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
 .wrapper {
   text-align: center;
-  margin: 50px auto; }
+  margin: auto; }
   .wrapper .video-container {
     margin: 0 auto;
     width: 50%;
@@ -22,13 +26,33 @@ body {
       width: 100%;
       height: auto; }
   .wrapper .controls {
-    margin: 20px auto; }
-    .wrapper .controls .command {
-      padding: 0.5em 0;
+    width: 600px;
+    margin: 5px auto; }
+    .wrapper .controls .joystick {
+      position: relative;
+      display: inline-block;
       width: 100px;
-      margin: 5px auto;
-      background-color: #aaaaaa; }
-      .wrapper .controls .command.left, .wrapper .controls .command.right {
-        display: inline-block; }
-      .wrapper .controls .command.active {
-        border: 2px red dotted; }
+      height: 100px;
+      margin: 10px;
+      margin-left: 30px;
+      background: #aaaaaa;
+      border-radius: 100%; }
+      .wrapper .controls .joystick .pos {
+        position: absolute;
+        margin-left: 25px;
+        margin-top: 25px;
+        width: 50px;
+        height: 50px;
+        background: #333333;
+        border-radius: 100%; }
+    .wrapper .controls .cartesian {
+      display: inline-block;
+      width: 250px; }
+      .wrapper .controls .cartesian .command {
+        height: 30px;
+        width: 60px;
+        line-height: 30px;
+        margin: 3px auto;
+        background-color: #aaaaaa; }
+        .wrapper .controls .cartesian .command.left, .wrapper .controls .cartesian .command.right, .wrapper .controls .cartesian .command.x_button, .wrapper .controls .cartesian .command.b_button {
+          display: inline-block; }
